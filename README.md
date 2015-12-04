@@ -15,11 +15,12 @@ the second argument as the number of outputs, like this:
 You then need to import a training set of data. The training set is a CSV
 file (the format CSV is chosen so you can export from a spreadsheet).
 In the case of a 4-in 2-out Single Layer Perceptron, you need to format the
-CSV like this:
+CSV like this (without headers):
 
     input1,input2,input3,input4,output1,output2
 		
-An example:
+An example row:
+
     0.02,1,0.3,0.99,0,1
 
 Where each delimited value is a floating-point number (or integer)
