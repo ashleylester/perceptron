@@ -15,9 +15,13 @@ class SingleLayer
     end
   end
 
-  def train
-
+  # Returns as an array the activations of all neurons
+  def output
+    output = []
+    @neurons.each do |neuron|
+      output << neuron.activation
+    end
   end
 
-  attr_reader :num_inputs, :num_outputs
+  attr_reader :num_inputs, :num_outputs, :neurons
 end

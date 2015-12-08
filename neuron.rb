@@ -19,6 +19,10 @@ class Neuron
     @activation = net_input - @bias > 0 ? 1 : 0
   end
 
-  attr_reader :inputs
-  attr_writer :weights
+  def change_weights(change)
+    @weights = @weights.zip(change).map { |x, y| x + y }
+  end
+
+  attr_accessor :inputs, :weights
+  attr_reader :name
 end

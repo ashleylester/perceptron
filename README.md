@@ -1,3 +1,7 @@
+# Perceptron
+
+> Perceptron is a simple AI library.
+
 TODO:
 * Write the training algorithm (you'll then have a working perceptron!)
 * Implement some persistence methods like saving and loading state from files
