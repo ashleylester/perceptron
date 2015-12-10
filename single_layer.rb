@@ -11,17 +11,17 @@ class SingleLayer
     @num_outputs = num_outputs
     @neurons = []
     num_outputs.times do |i|
-      @neurons << Neuron.new(i, num_inputs)
+      neurons << Neuron.new(i, num_inputs)
     end
   end
 
   # Returns as an array the activations of all neurons
   def output
     output = []
-    @neurons.each do |neuron|
+    neurons.each do |neuron|
       output << neuron.activation
     end
   end
 
-  attr_reader :num_inputs, :num_outputs, :neurons
+  attr_accessor :num_inputs, :num_outputs, :neurons
 end

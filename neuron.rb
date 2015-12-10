@@ -6,23 +6,22 @@ class Neuron
   def initialize(name, number_weights)
     @name = name
     @weights = Array.new(number_weights, 0)
-    @activation = 0
     @inputs = nil # Holds the inputs from the last training exemplar
     @bias = -1
   end
 
   def net_input
-    (0...@inputs.count).inject(0) { |total, i| @inputs[i] * @weights[i] + total }
+    (0...inputs.count).inject(0) { |total, i| inputs[i] * weights[i] + total }
   end
 
   def activation
-    @activation = net_input - @bias > 0 ? 1 : 0
+    net_input - bias > 0 ? 1 : 0
   end
 
   def change_weights(change)
-    @weights = @weights.zip(change).map { |x, y| x + y }
+    weights.zip(change).map! { |x, y| x + y }
   end
 
-  attr_accessor :inputs, :weights
+  attr_accessor :inputs, :weights, :bias
   attr_reader :name
 end

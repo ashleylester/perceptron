@@ -18,8 +18,8 @@ class Network
 
   def import_data(path)
     @training_data = CSV.foreach(path, converters: :float) do |row|
-      @training_inputs << row[0...@perceptron.num_inputs]
-      @training_outputs << row[@perceptron.num_inputs..-1]
+      training_inputs << row[0...perceptron.num_inputs]
+      training_outputs << row[perceptron.num_inputs..-1]
     end
   end
 
@@ -27,15 +27,15 @@ class Network
     epoch = 1
     error = 1
 
-    while epoch < @max_epoch && error > 0
-      puts "epoch #{epoch} of #{@max_epoch}"
-      (0...@training_inputs.size).each do |i|
-        puts "exemplar #{i} of #{@training_inputs.size}"
-        @perceptron.neurons.each_with_index do |neuron, j|
-          neuron.inputs = @training_inputs[i] # Clamp
-          error = neuron.activation - @training_outputs[i][j] # Calculate error
+    while epoch < max_epoch && error > 0
+      puts "epoch #{epoch} of #{max_epoch}"
+      (0...training_inputs.size).each do |i|
+        puts "exemplar #{i} of #{training_inputs.size}"
+        perceptron.neurons.each_with_index do |neuron, j|
+          neuron.inputs = training_inputs[i] # Clamp
+          error = neuron.activation - training_outputs[i][j] # Calculate error
           puts "error: #{error}"
-          change = @training_inputs[i].collect { |x| x * @learn_rate } # Adjust weights
+          change = training_inputs[i].collect { |x| x * learn_rate } # Adjust weights
           neuron.change_weights(change) if error > 0 # Apply adjustment
           puts "changed weights on neuron #{neuron.name} by #{change}" if error > 0 # Apply adjustment
         end
@@ -46,7 +46,7 @@ class Network
 
   end
 
-  attr_reader :training_inputs, :training_outputs
+  attr_accessor :training_inputs, :training_outputs, :perceptron, :learn_rate
 end
 
 network = Network.new(3,3)
