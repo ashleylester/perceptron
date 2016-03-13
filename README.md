@@ -3,12 +3,9 @@
 > Perceptron is a simple AI library.
 
 TODO:
-* Write the training algorithm (you'll then have a working perceptron!)
 * Implement some persistence methods like saving and loading state from files
-* Implement MLPs and different activation functions
+* Implement MLPs and different sorts of activation functions
 * Expand project to cover genetic algorithms and ACO/PSO
-
-To create a perceptron, wait until the next update! :)
 
 Instantiate the class network.rb and specify
 your perceptron diameters, the first argument as the number of inputs,
@@ -39,5 +36,3 @@ Where path is your data file, the path being relative to the network.rb file.
 Train the network with:
 
     network.train!
-
-Please bear with me while this is implemented.
